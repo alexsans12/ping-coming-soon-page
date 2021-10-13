@@ -19,9 +19,16 @@ function validation(e) {
 
 function validateEmail(element) {
     
-    if(!regexEmail.exec(element.value)) {
+    if(element.value === "") {
         element.classList.add('form-ping__input-error');
         errorMessage.classList.add('form-ping__error-text--show');
+        errorMessage.textContent = "Whoops! It looks like you forgot to add your email";
+        return false;
+    }
+    else if(!regexEmail.exec(element.value)) {
+        element.classList.add('form-ping__input-error');
+        errorMessage.classList.add('form-ping__error-text--show');
+        errorMessage.textContent = "Please provide a valid email address";
         return false;
     } else {
         element.classList.remove('form-ping__input-error');
